@@ -18,17 +18,9 @@ class AddRecursivelyActivity:AppCompatActivity() {
         viewModelFactory = MainActivityViewModelFactory(100)
         viewModel = ViewModelProvider(this,viewModelFactory).get(AddRecursivelyViewModel::class.java)
         binding = DataBindingUtil.setContentView(this,R.layout.add_recursively_layout)
-        viewModel.result.observe(this, Observer {
-            binding.tvResult.text = it.toString()
-        })
-        binding.apply {
-//            tvResult.text = viewModel.getCurrentValue().toString()
-            btnAdd.setOnClickListener {
-                if(editTxt.text.isNotEmpty()) {
-                    viewModel.afterAdd(Integer.parseInt(editTxt.text.toString())).toString()
-//                    tvResult.text = viewModel.getCurrentValue().toString()
-                }
-            }
-        }
+
+        binding.vm = viewModel
+        binding.lifecycleOwner = this
+
     }
 }

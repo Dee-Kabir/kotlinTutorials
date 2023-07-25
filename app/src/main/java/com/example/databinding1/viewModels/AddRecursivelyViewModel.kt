@@ -10,12 +10,14 @@ class AddRecursivelyViewModel(startingResult:Int):ViewModel() {
     val result:LiveData<Int>
         get() = _result
 
+    val num = MutableLiveData<String>()
     init {
         _result.value = startingResult
+        num.value = "0"
     }
 
-    fun afterAdd(num:Int){
-        _result.value= _result.value?.plus(num)
+    fun afterAdd(){
+        _result.value= _result.value?.plus(if(num.value.isNullOrEmpty()) 0 else num.value!!.toInt())
     }
 
     // no need after using live data
