@@ -23,7 +23,14 @@ class MainActivity : AppCompatActivity() {
             btnGoToAdd.setOnClickListener {
                 goToAddActivity()
             }
+            btnGoToTwoWay.setOnClickListener {
+                goToTwoWayDataBinding()
+            }
         }
+    }
+    private fun goToTwoWayDataBinding(){
+        val intent = Intent(this, TwoWayDataBindingActivity::class.java)
+        startActivity(intent)
     }
     private fun goToCountActivity(){
         val intent = Intent(this, ViewModelTestActivity::class.java)
