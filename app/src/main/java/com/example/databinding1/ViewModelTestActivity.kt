@@ -14,11 +14,10 @@ class ViewModelTestActivity:AppCompatActivity() {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
         binding = DataBindingUtil.setContentView(this,R.layout.view_model_test_acrivity)
-        binding.tvCount.text = viewModel.getCurrentCount().toString()
-        binding.apply {
-            btnCount.setOnClickListener {
-                tvCount.text = viewModel.getUpdatedCount().toString()
-            }
+//        binding.tvCount.text = viewModel.getCurrentCount().toString()
+        binding.vm = viewModel
+        viewModel.count.observe(this){
+            binding.tvCount.text = it.toString()
         }
 
     }
