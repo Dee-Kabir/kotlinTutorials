@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="0"
+        android:text="@{String.valueOf(vm.count)}"
         android:gravity="center"
         android:textSize="30sp"
         android:textColor="#000000"
